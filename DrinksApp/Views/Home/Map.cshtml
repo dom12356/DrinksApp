@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*<link rel="stylesheet" href="~/css/Map.css" />*@
+    <title>loadmapasyncHTML</title>
+    <style type='text/css'>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI',Helvetica,Arial,Sans-Serif
+        }
+
+        div.myMap {
+            width: 50vw;
+            height: 50vh;
+        }
+
+        html {
+            overflow-y: scroll;
+        }
+    </style>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    @*<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=YourBingMapsKey&branch=experimental'></script>*@
+    <script type='text/javascript'>
+        var map;
+        function loadMapScenario() {
+            
+
+            var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                credentials: 'lWw5l390tgfgPTJQx6pn~d2IhKBo1n5N01Ic5h67UYA~As_-1n3lbgommhvgOL6pCONo8QPk1xuSjv6dVaIX0L6na6Hl9suBFDH2ktOBVE-q',
+                center: new Microsoft.Maps.Location(54.8030, -7.5896)
+            });
+
+            var center = map.getCenter();
+
+            //Create custom Pushpin
+            var pin = new Microsoft.Maps.Pushpin(center, {
+                title: 'Castlefinn',
+                subTitle: 'City Center',
+                text: '1'
+            });
+
+            //Add the pushpin to the map
+            map.entities.push(pin);
+        }
+    </script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=loadMapScenario' async defer></script>
+</head>
+<body onload='loadMapScenario();'>
+    <div id='printoutPanel'></div>
+
+    <div id='myMap' style='width: 50vw; height: 50vh;'></div>
+</body>
+</html>
+

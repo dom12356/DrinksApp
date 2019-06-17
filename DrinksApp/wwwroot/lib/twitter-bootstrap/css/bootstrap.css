@@ -138,14 +138,14 @@ small {
 
 sub,
 sup {
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
   vertical-align: baseline;
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -.25em;
 }
 
 sup {
@@ -305,7 +305,6 @@ fieldset {
   padding: 0;
   margin: 0;
   border: 0;
-  padding: 0;
 }
 
 legend {
@@ -4071,7 +4070,7 @@ input[type="button"].btn-block {
 }
 
 .nav-link.disabled {
-  color: white;
+  color: #6c757d;
   pointer-events: none;
   cursor: default;
 }
@@ -4095,14 +4094,14 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs .nav-link.disabled {
-  color: white;
+  color: #6c757d;
   background-color: transparent;
   border-color: transparent;
 }
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: white;
+  color: #495057;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -4119,7 +4118,7 @@ input[type="button"].btn-block {
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  color: white;
+  color: #fff;
   background-color: #007bff;
 }
 

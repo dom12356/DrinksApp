@@ -10,9 +10,34 @@ namespace DrinksApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDrinkRepository _drinkRepository;
+
+        public HomeController(IDrinkRepository drinkRepository)
+        {
+            _drinkRepository = drinkRepository;
+        }
+
         public IActionResult Index()
         {
+            var drinks = _drinkRepository.GetAllDrinks().OrderBy(p => p.Name);
+            return View(drinks);
+        }
+
+        public IActionResult Map()
+        {
             return View();
+        }
+
+        public IActionResult ViewDetails(int Id)
+        {
+            var drink = _drinkRepository.GetDrinkById(Id);
+            return View(drink);
+        }
+
+        public IActionResult Cart(int Id)
+        {
+            var drink = _drinkRepository.GetDrinkById(Id);
+            return View(drink);
         }
 
         public IActionResult Privacy()

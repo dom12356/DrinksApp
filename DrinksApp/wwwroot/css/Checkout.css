@@ -1,0 +1,11 @@
+﻿body {
+}
+
+.col-md-5 * {
+    width: 400px;
+    
+}
+
+.form-group *{
+    white-space: nowrap;
+}
