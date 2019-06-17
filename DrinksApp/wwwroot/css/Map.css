@@ -1,7 +1,39 @@
 ﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI',Helvetica,Arial,Sans-Serif;
     align-content: center;
+    flex-direction: column;
 }
 
-div.printoutPanel *{
-    align-content:center;
+div.myMap {
+    width: 45vw;
+    height: 45vh;
+    margin-bottom: 5em;
 }
+
+html {
+    overflow-y: scroll;
+}
+
+.vertical-menu {
+    width: 200px;
+    float: right;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+    .vertical-menu a.active {
+        background-color: #990033;
+        color: white;
+    }

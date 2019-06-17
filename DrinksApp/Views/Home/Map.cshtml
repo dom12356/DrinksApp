@@ -1,56 +1,74 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    @*<link rel="stylesheet" href="~/css/Map.css" />*@
     <title>loadmapasyncHTML</title>
-    <style type='text/css'>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            font-family: 'Segoe UI',Helvetica,Arial,Sans-Serif
-        }
-
-        div.myMap {
-            width: 50vw;
-            height: 50vh;
-        }
-
-        html {
-            overflow-y: scroll;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/Map.css" />
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     @*<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=YourBingMapsKey&branch=experimental'></script>*@
     <script type='text/javascript'>
         var map;
-        function loadMapScenario() {
-            
+        var map = null, infobox, dataLayer;
 
-            var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
-                credentials: 'lWw5l390tgfgPTJQx6pn~d2IhKBo1n5N01Ic5h67UYA~As_-1n3lbgommhvgOL6pCONo8QPk1xuSjv6dVaIX0L6na6Hl9suBFDH2ktOBVE-q',
-                center: new Microsoft.Maps.Location(54.8030, -7.5896)
-            });
+        function GetMap() {
+            map = new Microsoft.Maps.Map(document.getElementById("myMap"),
+                {
+                    credentials: "lWw5l390tgfgPTJQx6pn~d2IhKBo1n5N01Ic5h67UYA~As_-1n3lbgommhvgOL6pCONo8QPk1xuSjv6dVaIX0L6na6Hl9suBFDH2ktOBVE-q ",
+                    center: new Microsoft.Maps.Location(54.8030, -7.5896)
+                });
+            dataLayer = new Microsoft.Maps.EntityCollection();
+            map.entities.push(dataLayer);
+            map.setView({ zoom: 7 });
+            var infoboxLayer = new Microsoft.Maps.EntityCollection();
+            map.entities.push(infoboxLayer);
+            infobox = new Microsoft.Maps.Infobox();
+            infoboxLayer.push(infobox);
+            AddData();
+        }
 
-            var center = map.getCenter();
+        function AddData() {
+            //Below is temp data that contains lat , lng and description values.
+            var pin1 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.80296064148081, -7.595801353454591));
+            pin1.Title = "Castlefinn Drink Shop";
+            pin1.Description = "Main Street, Castlefinn";
+            Microsoft.Maps.Events.addHandler(pin1, 'click', displayInfobox);
+            dataLayer.push(pin1);
 
-            //Create custom Pushpin
-            var pin = new Microsoft.Maps.Pushpin(center, {
-                title: 'Castlefinn',
-                subTitle: 'City Center',
-                text: '1'
-            });
+            var pin2 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.7968, -7.7875));
+            pin2.Title = "Ballybofey Drink Shop";
+            pin2.Description = "Main Street, Ballybofey";
+            Microsoft.Maps.Events.addHandler(pin2, 'click', displayInfobox);
+            dataLayer.push(pin2);
 
-            //Add the pushpin to the map
-            map.entities.push(pin);
+            var pin3 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.9558, -7.7343));
+            pin3.Title = "Letterkenny Drink Shop";
+            pin3.Description = "Main Street, Letterkenny";
+            Microsoft.Maps.Events.addHandler(pin3, 'click', displayInfobox);
+            dataLayer.push(pin3);
+
+            var pin2 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.6538, -8.1096));
+            pin2.Title = "Donegal Town Drink Shop";
+            pin2.Description = "Main Street, Donegal Town";
+            Microsoft.Maps.Events.addHandler(pin2, 'click', displayInfobox);
+            dataLayer.push(pin2);
+        }
+
+        function displayInfobox(e) {
+            if (e.targetType == 'pushpin') {
+                infobox.setLocation(e.target.getLocation());
+
+                infobox.setOptions({
+                    visible: true,
+                    title: e.target.Title,
+                    description: e.target.Description
+                });
+            }
         }
     </script>
-    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=loadMapScenario' async defer></script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
 </head>
-<body onload='loadMapScenario();'>
-    <div id='printoutPanel'></div>
-
-    <div id='myMap' style='width: 50vw; height: 50vh;'></div>
+<body onload='GetMap();'>
+    <h2>Find A Store Near You</h2>
+    <div id='myMap' style='width: 45vw; height: 45vh;'></div>
 </body>
 </html>
 
