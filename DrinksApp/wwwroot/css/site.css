@@ -33,8 +33,8 @@ header.header {
     color: white;
 }
 
-.navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3.container a {
-    color: white !important;
+.nav nav-pills nav-stacked *{
+    padding: 5px;
 }
 
 .buttons a:hover {
@@ -50,6 +50,13 @@ header.header {
 
 .nav-item{
     color: white !important;
+}
+
+.nav-item.form-inline#logout {
+    transition: background .5s;
+    transition: color .5s;
+    color: #d9d9d9;
+    background: #660022;
 }
 
 .item{
