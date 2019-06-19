@@ -29,27 +29,27 @@
             //Below is temp data that contains lat , lng and description values.
             var pin1 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.80296064148081, -7.595801353454591));
             pin1.Title = "Castlefinn Drink Shop";
-            pin1.Description = "Main Street, Castlefinn";
+            pin1.Description = "Main Street, Castlefinn, 074 92 93752";
             Microsoft.Maps.Events.addHandler(pin1, 'click', displayInfobox);
             dataLayer.push(pin1);
 
             var pin2 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.7968, -7.7875));
             pin2.Title = "Ballybofey Drink Shop";
-            pin2.Description = "Main Street, Ballybofey";
+            pin2.Description = "Main Street, Ballybofey, 074 92 92816";
             Microsoft.Maps.Events.addHandler(pin2, 'click', displayInfobox);
             dataLayer.push(pin2);
 
             var pin3 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.9558, -7.7343));
             pin3.Title = "Letterkenny Drink Shop";
-            pin3.Description = "Main Street, Letterkenny";
+            pin3.Description = "Main Street, Letterkenny, 074 92 03927";
             Microsoft.Maps.Events.addHandler(pin3, 'click', displayInfobox);
             dataLayer.push(pin3);
 
-            var pin2 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.6538, -8.1096));
-            pin2.Title = "Donegal Town Drink Shop";
-            pin2.Description = "Main Street, Donegal Town";
-            Microsoft.Maps.Events.addHandler(pin2, 'click', displayInfobox);
-            dataLayer.push(pin2);
+            var pin4 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(54.6538, -8.1096));
+            pin4.Title = "Donegal Town Drink Shop";
+            pin4.Description = "Main Street, Donegal Town, 074 92 48291";
+            Microsoft.Maps.Events.addHandler(pin4, 'click', displayInfobox);
+            dataLayer.push(pin4);
         }
 
         function displayInfobox(e) {
@@ -68,7 +68,7 @@
 </head>
 <body onload='GetMap();'>
     <h2>Find A Store Near You</h2>
-    <div id='myMap' style='width: 45vw; height: 45vh;'></div>
+    <div id='myMap'></div>
 </body>
 </html>
 
