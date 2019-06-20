@@ -17,15 +17,22 @@
             @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
             {
                 <tr>
-                    <td class="text-center">@line.Amount</td>
-                    <td class="text-left">@line.drink.Name</td>
-                    <td class="text-right">@line.drink.Price.ToString("c")</td>
-                    <td class="text-right">
-                        @((line.Amount * line.drink.Price).ToString("c"))
+                    <td class="text-center">
+                        <a class="remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-drinkId="@line.drink.Id">
+                            <span class="glyphicon glyphicon-minus">-</span>
+                        </a>
+                          @line.Amount
+                        <a class="add" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@line.drink.Id">
+                            <span class="glyphicon glyphicon-plus">+</span>
+                        </a>
                     </td>
-                    <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-drinkId="@line.drink.Id"><i class="fa fa-trash"></i>Delete</a></td>
-                </tr>
-            }
+                <td class="text-left">@line.drink.Name</td>
+                <td class="text-right">@line.drink.Price.ToString("c")</td>
+                <td class="text-right">
+                    @((line.Amount * line.drink.Price).ToString("c"))
+                </td>
+            </tr>
+        }
         </tbody>
         <tfoot>
             <tr>
